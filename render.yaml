@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: my-nextjs-app
+    env: node
+    plan: free
+    region: singapore
+    buildCommand: |
+      npm ci
+      npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
